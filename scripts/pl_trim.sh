@@ -10,6 +10,7 @@ help(){
   echo -e "k (keepBothReads)  Type TRUE to keep both reads after trimming"
   echo -e "a (adapter_file)   name of the adapter file"
   echo -e "m (min_len)        min read length feature"
+  echo -e "\tensure that raw files and adaptor file for trimmomatic are in the same input directory"
   exit 1
   
 }
