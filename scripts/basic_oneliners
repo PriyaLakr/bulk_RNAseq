@@ -1,0 +1,13 @@
+# create a conda working ennviornment 
+
+conda create -name RNAseq
+
+conda activate RNAseq
+
+# install dependencies with conda and/or pip
+
+pip install multiqc
+conda install -c bioconda fastqc
+conda install -c bioconda trimmomatic
+
+
