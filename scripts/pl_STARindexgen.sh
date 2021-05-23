@@ -17,7 +17,7 @@ module load codes/star-2.7
 
 overhang=${maxlen}-1
 
-STAR --runMode genomeGenerate --runThreadN 50 --genomeDir $genomedir --genomeFastaFiles $fastadir/$fasta --sjdbGTFfile $fastadir/$gtf --sjdbOverhang $overhang > STARindex.log
+STAR --runMode genomeGenerate --runThreadN 50 --genomeDir $genomedir --genomeFastaFiles $fastadir/$fasta --sjdbGTFfile $fastadir/$gtf --sjdbOverhang $overhang > $genomedir/STARindex.log
 
 module unload codes/star-2.7
 
