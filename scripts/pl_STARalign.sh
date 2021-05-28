@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ ## ======= comment out PBS parameters if not using HPC; for comment out use doube hash tag =======
+ 
 #PBS -l nodes=node1:ppn=60
 #PBS -N process
 #PBS -o process.out
