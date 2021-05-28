@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 #PBS -l nodes=node1:ppn=60
