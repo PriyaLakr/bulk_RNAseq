@@ -18,7 +18,7 @@ Multiple alignment tools are there in this world of bioinformatics. We will use 
 `pl_STARindexgen.sh`
 `pl_STARalign.sh`
 
-Alignment step is tricky. Always read carefully the documentation before setting up any advanced paramaeters. This step can drastically affect downstream analysis.
+Alignment step is tricky. Always read carefully the documentation before setting up any advanced paramaeters. This step can drastically affect downstream analyses.
 
 # Read Count
 Cool, we are done with alignment. We will now move to counting those alignments in a meaningful way. 
