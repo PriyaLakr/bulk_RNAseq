@@ -9,5 +9,10 @@ conda activate RNAseq
 pip install multiqc
 conda install -c bioconda fastqc
 conda install -c bioconda trimmomatic
+conda install -c bioconda star
+conda install -c bioconda subread
 
+#to see all tools in the conda enviornment and their versions
+conda list 
 
+conda deactivate 
