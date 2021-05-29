@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# usage: bash pl_trim.sh [infile path] [threads]
-
 help(){
   echo ""
   echo -e "i (input_dir)      path to the directory containing input files"
@@ -16,7 +14,7 @@ help(){
 }
 
 while getopts "i:s:t:o:m:a:l:" opt; do
-    case $opt in:
+    case "$opt" in:
       i ) input_dir="$OPTARG" ;;
       s ) infile_suffix="$OPTARG" ;;
       t ) num_thread="$OPTARG" ;;
