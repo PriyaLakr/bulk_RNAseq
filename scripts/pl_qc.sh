@@ -13,3 +13,4 @@ cd $out_dir
 multiqc .
 
 echo -e "process completed"
+
