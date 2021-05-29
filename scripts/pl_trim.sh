@@ -29,13 +29,12 @@ while getopts "i:s:t:o:m:a:l:" opt; do
    done
    
 cd $input_dir
-mkdir trim_out
-trim=$input_dir/trim_out
+mkdir -p $input_dir/trim_out
 
 start=$(date +%s)
 
 for infile in *${infile_suffix};
-  do name=$(basename $infile ${infile_suffix}); trimmomatic PE -threads $num_thread ${name}${infile_suffix} ${name}${infile_suffix}  $trim/${name}_R1_trim.fastq.gz  $trim/${name}_R1_untrim.fastq.gz  $trim/${name}_R2_trim.fastq.gz  $trim/${name}_R2_untrim.fastq.gz ILLUMINACLIP:${adapter_file}:2:30:10:8:${keepBothReads} MINLEN:${min_len};
+  do name=$(basename $infile ${infile_suffix}); trimmomatic PE -threads $num_thread ${name}${infile_suffix} ${name}${infile_suffix}  $input_dir/trim_out/${name}_R1_trim.fastq.gz  $input_dir/trim_out/${name}_R1_untrim.fastq.gz  $input_dir/trim_out/${name}_R2_trim.fastq.gz  $input_dir/trim_out/${name}_R2_untrim.fastq.gz ILLUMINACLIP:${adapter_file}:2:30:10:8:${keepBothReads} MINLEN:${min_len};
 done
 
 end=$(date +%s)
