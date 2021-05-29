@@ -16,3 +16,4 @@ conda install -c bioconda subread
 conda list 
 
 conda deactivate 
+
