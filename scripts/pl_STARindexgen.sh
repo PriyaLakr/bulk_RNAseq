@@ -13,6 +13,7 @@ echo $fastadir
 echo $fasta
 echo $gtf
 
+## use while working with HPC; otherwise conda activate enviornmentName
 module load codes/star-2.7
 
 overhang=${maxlen}-1
@@ -22,3 +23,4 @@ STAR --runMode genomeGenerate --runThreadN 50 --genomeDir $genomedir --genomeFas
 module unload codes/star-2.7
 
 echo "done"
+
