@@ -15,9 +15,8 @@ help(){
   
 }
 
-while getopts "i:s:t:o:m:a:l:" opt
-  do
-    case "opt" in:
+while getopts "i:s:t:o:m:a:l:" opt; do
+    case $opt in:
       i ) input_dir="$OPTARG" ;;
       s ) infile_suffix="$OPTARG" ;;
       t ) num_thread="$OPTARG" ;;
@@ -25,7 +24,7 @@ while getopts "i:s:t:o:m:a:l:" opt
       k ) keepBothReads="$OPTARG" ;;
       a ) adapter_file="$OPTARG" ;;
       l ) min_len="$OPTARG" ;;
-      \? ) help, exit 1
+      \? ) help, exit 1 ;;
      esac
    done
    
