@@ -1,11 +1,14 @@
 #!/bin/bash
 
+cd $outdir
+mkdir featureCount_out
+
 ## ===== feature counts ===== 
 ## Annotation files should be same for mapping and read counting 
 
-featureCounts -T $num_threads -p -s $strand -F GTF -a $gtf -o $raw_wd/featureCount/counts.txt $raw_wd/star_results/*Coord.out.bam
+featureCounts -F GTF -a $gdir/$gtf -s $strand -T $num_threads -p $outdir/*${suffix} -o $outdir/featureCount_out/${expName}_counts
 
-
+## Specificy strand is very important for correct output
 ## ===== htseq counts =====
 
 
