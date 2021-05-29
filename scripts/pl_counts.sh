@@ -42,5 +42,3 @@ featureCounts -F GTF -a $gtf -s $strand -p ${outdir}/*${suffix} -o ${outdir}/${e
 ## ===== htseq counts =====
 
 
-
-
