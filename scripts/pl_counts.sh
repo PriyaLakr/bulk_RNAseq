@@ -26,6 +26,7 @@ while getopts "d:g:n:t:s:e:" opt; do
   esac
 done
   
+  ## note: change it specific parameters instead of all 
 if [ -z "$@" ]; then
   help
 fi
