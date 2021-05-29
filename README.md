@@ -1,4 +1,4 @@
-# RNAseq analysis workflow
+# RNAseq analysis workflow (Under development)
 
 # Quality control
 Start with quality checking of the RNAseq fastq files. Commonly used tools include [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) [MultiQC](https://multiqc.info)
