@@ -20,7 +20,7 @@ echo $revsuffix
 
 module load codes/star-2.7
 
-if [[ -z "$sample_names_list" ]]; then 
+if [ -z "$sample_names_list" ]; then 
 ### storing file name prefixes
     ls $raw_data/*${frwdsuffix} | xargs -n 1 basename | sed s/${frwdsuffix}// | sort -u > $inputdir/sample_names_list
 fi
@@ -51,6 +51,6 @@ STAR --genomeDir $indexdir --runThreadN 60 \
 --alignMatesGapMax 1000000 \
 --outFilterMismatchNmax 999 \
 --sjdbScore 1 2> $outdir/${i}.stderr;
-done < "$inputdir/sample_names_list"
+done < "$inputdir/$sample_names_list"
 
 echo 'completed'
