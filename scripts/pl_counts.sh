@@ -7,7 +7,7 @@ help(){
   echo -e "t (num_threads)    Number of threads\n"
   echo -e "n (expName)        Name of the experiment to specify prefix of output\n"
   echo -e "s (strand)         Strandness of the RNA library. For foward, specify 1; for reverese, specify 2\n"
-  echo -e "m (e)              Common suffix of input sam/bam files\n"
+  echo -e "e (suffix)         Common suffix of input sam/bam files\n"
   echo -e "======== Be careful ========\n"
   echo -e "Specificy strand is very important for correct output\n"
   echo -e "It is good to use same annotation files for mapping and read counting\n"
