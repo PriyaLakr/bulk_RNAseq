@@ -32,4 +32,4 @@ I'm using here featureCounts
 # Differential gene expression analysis 
 Now we have the read count matrix. With this we can perform various downstream analyses such as Differential gene expression analysis, etc.
 
-
+Using R packages
