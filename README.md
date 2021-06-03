@@ -20,7 +20,7 @@ Multiple alignment tools are there in this world of bioinformatics. We will use 
 `bash scripts/pl_STARalign.sh [options]`
 
 Alignment step is tricky. Always read carefully the documentation before setting up any advanced paramaeters. This step can drastically affect downstream analyses. 
-Alignments can be quality check using RSeQC. 
+Alignments can be quality check using RSeQC, QoRTs, etc. 
 
 # Read Count
 Cool, we are done with alignment. We will now move to counting those alignments in a meaningful way. 
