@@ -27,18 +27,17 @@ fi
 
 echo $sample_names_list
 
-while read i; do
+while read infile; do
 STAR --genomeDir $indexdir --runThreadN 60 \
---readFilesIn $inputdir/${i}${frwdsuffix} $inputdir/${i}${revsuffix} \
+--readFilesIn $inputdir/${infile}${frwdsuffix} $inputdir/${infile}${revsuffix} \
 --outSAMtype BAM SortedByCoordinate \
 --outBAMsortingThreadN 50 \
---outSAMunmapped SAM unmappedReads \
 --readFilesCommand zcat \
 --outFilterMultimapNmax 20 \
 --outSAMunmapped Within \
 --outSAMattributes NH HI AS NM MD \
 --outFilterType BySJout \
---outFileNamePrefix $outdir/$i \
+--outFileNamePrefix $outdir/$infile \
 --chimOutType Junctions \
 --chimOutJunctionFormat 1 \
 --chimSegmentMin 12 \
@@ -50,7 +49,7 @@ STAR --genomeDir $indexdir --runThreadN 60 \
 --alignIntronMax 1000000 \
 --alignMatesGapMax 1000000 \
 --outFilterMismatchNmax 999 \
---sjdbScore 1 2> $outdir/${i}.stderr;
+--sjdbScore 1 2> $outdir/${infile}.stderr;
 done < "$inputdir/$sample_names_list"
 
 echo 'completed'
