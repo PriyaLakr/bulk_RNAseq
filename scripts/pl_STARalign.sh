@@ -16,22 +16,25 @@ echo $gtf
 echo $sample_names_list 
 echo $frwdsuffix
 echo $revsuffix
-
+echo $num_threads
 
 module load codes/star-2.7
 
 if [ -z "$sample_names_list" ]; then 
 ### storing file name prefixes
-    ls $raw_data/*${frwdsuffix} | xargs -n 1 basename | sed s/${frwdsuffix}// | sort -u > $inputdir/sample_names_list
+    ls $inputdir/*${frwdsuffix} | xargs -n 1 basename | sed s/${frwdsuffix}// | sort -u > $inputdir/sample_names_list
 fi
+
+mkdir -p $inputdir/STARresults
+outdir=$inputdir/STARresults
 
 echo $sample_names_list
 
 while read infile; do
-STAR --genomeDir $indexdir --runThreadN 60 \
+STAR --genomeDir $indexdir --runThreadN $num_threads \
 --readFilesIn $inputdir/${infile}${frwdsuffix} $inputdir/${infile}${revsuffix} \
 --outSAMtype BAM SortedByCoordinate \
---outBAMsortingThreadN 50 \
+--outBAMsortingThreadN $num_threads \
 --readFilesCommand zcat \
 --outFilterMultimapNmax 20 \
 --outSAMunmapped Within \
