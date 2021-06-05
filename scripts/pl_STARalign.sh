@@ -9,16 +9,23 @@
 
 echo -e "\tAligning reads...."
 
-echo $indexdir 
-echo $inputdir
-echo $outdir
-echo $gtf
-echo $sample_names_list 
-echo $frwdsuffix
-echo $revsuffix
-echo $num_threads
+usage(){
+echo "Just a help!........"
+}
 
-module load codes/star-2.7
+while getopts "i:f:d:r:t:l:" opt; do
+	case "$opt" in
+		i ) inputdir="$OPTARG" ;; # ok
+		f ) frwdsuffix="$OPTARG" ;; # ok
+		d ) indexdir="$OPTARG" ;; # ok
+		r ) revsuffix="$OPTARG" ;; # ok
+		t ) num_threads="$OPTARG" ;; # ok
+		l ) sample_names_list="$OPTARG" ;; # ok
+		\? ) usage; exit 1 ;; # print usage function and exit
+	esac
+done
+
+##module load codes/star-2.7
 
 if [ -z "$sample_names_list" ]; then 
 ### storing file name prefixes
@@ -28,7 +35,7 @@ fi
 mkdir -p $inputdir/STARresults
 outdir=$inputdir/STARresults
 
-echo $sample_names_list
+##echo $sample_names_list
 
 while read infile; do
 STAR --genomeDir $indexdir --runThreadN $num_threads \
