@@ -43,3 +43,25 @@ b <- colSums(readcounts.new)
 a == b
 
 # normalization by estimating size factors 
+# normalization by eastimating size factors 
+DESeq.ds.new <- estimateSizeFactors(DESeq.ds.new)
+# run to see size factors
+sizeFactors(DESeq.ds.new)
+colData(DESeq.ds.new) # hereyou will see a new colum of size factors added!
+
+# counts(normalized = TRUE) allows you to retrieve the _normalized_ read counts
+counts.sf_normalized <- counts(DESeq.ds.new, normalized = TRUE)
+
+# after normalization, you can perform log transformation log2, log10, and use vst function of DESeq2
+log.norm.counts <- log2(counts.sf_normalized+1)
+log.norm.counts.x <- log10(counts.sf_normalized+1)
+normcounts <- vst(DESeq.ds.new, blind = TRUE)
+
+# clustering with pca and correlation
+normcounts <- vst(DESeq.ds.new, blind = TRUE)
+P <- plotPCA(normcounts)
+P <- P + theme_bw() + ggtitle("Rlog transformed counts")
+print(P)
+
+		##		====== DGE using DESeq2 ========
+
