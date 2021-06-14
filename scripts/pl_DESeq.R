@@ -23,7 +23,7 @@ row.names(readcounts.new) <- readcounts$Geneid
 # save original names to orig_names and change col names that correspond to sample names to something simple; It makes further visualization, subsetting, etc easier.
 
 orig_names <- names(readcounts.new) 
-new_names <- gsub(".*(_|.)(S|N)([0-9]+).*", "\\2\\3", orig_names) # change gsub parameters here depending on your sample names; One liner: names(readcounts.new) <- gsub(".*(_|.)(S|N)([0-9]+).*", "\\2\\3", names(readcounts.new))
+new_names <- gsub(".*(_|.)(E|W)([0-9]+).*", "\\2\\3", orig_names) # change gsub parameters here depending on your sample names; One liner: names(readcounts.new) <- gsub(".*(_|.)(S|N)([0-9]+).*", "\\2\\3", names(readcounts.new))
 names(readcounts.new) <- new_names
 
 
