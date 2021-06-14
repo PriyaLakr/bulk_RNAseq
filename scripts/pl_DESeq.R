@@ -1,6 +1,6 @@
 # load all packages required for the analysis
 
-packages <- c("magrittr","DESeq2","ggplot2","pheatmap", "RColorBrewer", "dplyr")
+packages <- c("knitr","magrittr","DESeq2","ggplot2","pheatmap","dplyr","RColorBrewer","AnnotationDbi","biomaRt","org.Hs.eg.db","clusterProfiler")
 invisible(lapply(packages, library, character.only = TRUE))
 
 # set working directory
@@ -17,10 +17,14 @@ readcounts.new <- readcounts[ , -c(1)] # -c removes the columns specificed insid
 dim(readcounts.new)
 head(readcounts.new)
 
-# change row names to geneids.And col names to sample  (that is already the case)
+# change row names to geneids. 
 row.names(readcounts.new) <- readcounts$Geneid
 
-names(readcounts.new) <- c("exp1","exp2","control1","control2") # using gsub here is a better option for larger number of columns
+# save original names to orig_names and change col names that correspond to sample names to something simple; It makes further visualization, subsetting, etc easier.
+
+orig_names <- names(readcounts.new) 
+new_names <- gsub(".*(_|.)(S|N)([0-9]+).*", "\\2\\3", orig_names) # change gsub parameters here depending on your sample names; One liner: names(readcounts.new) <- gsub(".*(_|.)(S|N)([0-9]+).*", "\\2\\3", names(readcounts.new))
+names(readcounts.new) <- new_names
 
 
 # create a metadata file
@@ -43,8 +47,8 @@ b <- colSums(readcounts.new)
 a == b
 
 # normalization by estimating size factors 
-# normalization by eastimating size factors 
 DESeq.ds.new <- estimateSizeFactors(DESeq.ds.new)
+
 # run to see size factors
 sizeFactors(DESeq.ds.new)
 colData(DESeq.ds.new) # hereyou will see a new colum of size factors added!
