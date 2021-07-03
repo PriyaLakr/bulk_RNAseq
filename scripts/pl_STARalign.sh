@@ -2,11 +2,11 @@
 
 help(){
 	echo "Just a help!"
-	echo "Usage: bash a.sh -i /DATA/align -d /nfs_node1/anshul/DATA_master/covid_lung_analysis/index_160  -f R1_p_trim.fastq.gz  -r R2_p_trim.fastq.gz  -t 16 -g /nfs_node1/anshul/DATA_master/covid_lung_analysis/human_ref/gencode.v36.primary_assembly.annotation.gtf"
+	echo "Usage: bash pl_STARalign.sh -i /DATA/align -d /PATH/TO/HUMAN/GENOME/INDEX  -f R1.fastq.gz  -r R2.fastq.gz  -t 16 -g /PATH/TO/HUMAN/GENOME/GTF/gencode.v36.primary_assembly.annotation.gtf"
 }
 
 
-while getopts "i:f:d:r:t:l:g:" opt; do
+while getopts "i:f:d:r:t:l:g::h" opt; do
 	case "$opt" in
 		i) inputdir="$OPTARG" ;; 
 		f) frwdsuffix="$OPTARG" ;; 
@@ -58,7 +58,7 @@ align_reads(){
 }
 
 
-if [ "$inputdir" ]; then  # if [ "$@" ]; then this not working 
+if [ "$inputdir" ]; then  # if [ "$@" ]; then -> this aint working; check
 	start=$(date +"%s")
 	echo -e "\tAligning reads...." | tee -a run.info
 	mkdir -p $inputdir/STARresults && \
